@@ -17,25 +17,22 @@ select.addEventListener("change", function() {
   
 });
 
-function procesarTexto() {
-    let input = document.getElementById("amigo");
-    let texto = input.value.trim(); // Obtener el texto y quitar espacios extr
-    if (texto !== "") { // Si no está vacío
-        agregarAmigo();
-    }
-}
 
 document.getElementById("amigo").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") { // Si presiona "Enter"
+    if (event.key === " ") { // Si presiona "Enter"
         agregarAmigo(); // Llamar a la función del botón
+    } else if (event.key === "Enter" ) {
+        sortearAmigo();
     }
 });
 
 document.addEventListener("keydown", function(event) {
     if (event.key.toLowerCase() === "e") { // Si presiona "E" o "e"
         document.getElementById("amigo").focus(); // Enfocar el input
-    }
+    } 
 });
+
+
 function asignarTexto (element,text) {
     let a = document.getElementById(element).value;
     a.innerHTML = text;
@@ -63,6 +60,18 @@ function ActualizarLista() {
     }
 }
 
+
+function Title() {
+    let opc = document.getElementById("opciones").value;
+    let otro = document.getElementById("otro-input").value;
+    let titulo = document.querySelector(".main-title");
+    if (opc == "otros") {
+        titulo.innerHTML = otro + " secreto";
+    } else {
+        titulo.innerHTML = opc + " secreto";
+    }
+}
+
 function sortearAmigo() {
 
     let opc = document.getElementById("opciones").value;
@@ -82,6 +91,7 @@ function sortearAmigo() {
         } else {
             res.innerHTML = "El " + opc + " secreto es para " + amigos[indiceAleatorio];
             amigos = [];
+            li.innerHTML = "";
         }
     }
 }
