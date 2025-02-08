@@ -38,6 +38,7 @@ function sortearAmigo() {
         li.innerHTML = "";
         let res = document.querySelector("#resultado")  
         res.innerHTML = "El amigo secreto es " + amigos[indiceAleatorio];
+        amigos = [];
     }
 }
 
