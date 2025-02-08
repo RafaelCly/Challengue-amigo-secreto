@@ -23,6 +23,10 @@ body {
     align-items: center;
 }
 
+.par {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
 .main-content {
     display: flex;
     flex-direction: column;
@@ -76,9 +80,22 @@ body {
     justify-content: center;
     width: 100%;
     max-width: 600px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+#otro-input {
+    display: none; /* Ocultar input al inicio */
+    margin-top: 10px;
+}
+
+.slc {
+    display: flex;
+    gap: 10px;
+}
+
+.opciones {
+    border: 2px solid #000;
+}
 .input-name {
     width: 100%;
     padding: 10px;

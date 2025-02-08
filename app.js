@@ -1,6 +1,41 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let amigos = [];
 
+
+
+
+const select = document.getElementById("opciones");
+const otroInput = document.getElementById("otro-input")
+select.addEventListener("change", function() {
+    if (select.value === "otros") {
+        otroInput.style.display = "block"; // Mostrar input
+        otroInput.focus(); // Colocar el cursor en el input
+    } else {
+        otroInput.style.display = "none"; // Ocultar input
+        otroInput.value = ""; // Limpiar el campo
+    }
+  
+});
+
+function procesarTexto() {
+    let input = document.getElementById("amigo");
+    let texto = input.value.trim(); // Obtener el texto y quitar espacios extr
+    if (texto !== "") { // Si no está vacío
+        agregarAmigo();
+    }
+}
+
+document.getElementById("amigo").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") { // Si presiona "Enter"
+        agregarAmigo(); // Llamar a la función del botón
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key.toLowerCase() === "e") { // Si presiona "E" o "e"
+        document.getElementById("amigo").focus(); // Enfocar el input
+    }
+});
 function asignarTexto (element,text) {
     let a = document.getElementById(element).value;
     a.innerHTML = text;
@@ -30,6 +65,9 @@ function ActualizarLista() {
 
 function sortearAmigo() {
 
+    let opc = document.getElementById("opciones").value;
+    let otro = document.getElementById("otro-input").value;
+
     if (amigos == '') {
         alert("No hay ni un nombre");
     } else {
@@ -37,8 +75,14 @@ function sortearAmigo() {
         let li = document.querySelector("#listaAmigos")
         li.innerHTML = "";
         let res = document.querySelector("#resultado")  
-        res.innerHTML = "El amigo secreto es " + amigos[indiceAleatorio];
-        amigos = [];
+
+        if (opc == "otros") {
+            res.innerHTML = "El " + otro + " secreto es para " + amigos[indiceAleatorio];
+            amigos = [];
+        } else {
+            res.innerHTML = "El " + opc + " secreto es para " + amigos[indiceAleatorio];
+            amigos = [];
+        }
     }
 }
 
